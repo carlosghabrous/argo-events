@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: azure-blob-storage
+  namespace: argo-events
+spec:
+  azureEvents:
+    example:
+      accountName: devstoreaccount1
+      accountKey: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+      containerName: my-container
+      eventTypes:
+        - Microsoft.Storage.BlobCreated
