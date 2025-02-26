@@ -8,6 +8,7 @@ spec:
     - name: azure-blob-storage
       eventSourceName: azure-blob-storage
       eventName: example
+  eventBusName: default
   triggers:
     - template:
         name: argo-workflow-trigger

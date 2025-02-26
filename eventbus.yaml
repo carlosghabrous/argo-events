@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: EventBus
+metadata:
+  name: default
+  namespace: argo-events
+spec:
+  nats:
+    native:
+      auth: token
+      clusterID: argo-events-cluster  # Explicitly set a cluster name
+      persistence:
+        volumeSize: 1Gi

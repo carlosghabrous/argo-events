@@ -11,12 +11,35 @@ minikube start
 ```bash
 kubectx minikube
 ```
-1. Install argo events: https://argoproj.github.io/argo-events/installation/
-
-1. Install azurite. You will be able to simulate azure blob storage with it. 
+1. Install argo.
 ```bash
-docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 mcr.microsoft.com/azure-storage/azurite
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.6.4/install.yaml
 ```
+1. Install argo events
+```
+kubectl create namespace argo-events
+kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-events/stable/manifests/install.yaml
+# Install with a validating admission controller
+kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-events/stable/manifests/install-validating-webhook.yaml
+kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/stable/examples/eventbus/native.yaml
+
+```
+1. Create the following resources: 
+```bash
+kubectl apply -n argo-events eventbus.yaml
+
+```
+
+
+
+
+
+
+
+
+
+
 1. With the azurite container running, create a blob container.
 NOTE: the account name and passord are azurite's defaults
 
